@@ -43,4 +43,20 @@ func TestMain(t *testing.T) {
 			Expect(len(runes1)).To(Equal(*u1))
 		})
 	})
+
+	g.Describe("numUppercaseRunes", func() {
+		g.It("should accurately count the number of uppercase runes in a word", func() {
+			word1 := "SHAKWAM"
+			word2 := "hellodarknessmyoldfriend"
+
+			runeSlice1 := []rune(word1)
+			runeSlice2 := []rune(word2)
+
+			n1 := numUppercaseRunes(&runeSlice1)
+			n2 := numUppercaseRunes(&runeSlice2)
+
+			Expect(len(word1)).To(Equal(*n1))
+			Expect(len(word2)).NotTo(Equal(*n2))
+		})
+	})
 }
