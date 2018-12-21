@@ -31,7 +31,7 @@ func main() {
 		fmt.Printf("failed to get upper case fucks: %v", err.Error())
 	}
 
-	lenUpperCaseFucks := len(*upperCaseFucks)
+	lenUpperCaseFucks := len(upperCaseFucks)
 	fmt.Printf("Number of CAPSLOCK Fucks: %v\n", lenUpperCaseFucks)
 
 	var p float32
@@ -58,7 +58,7 @@ func parseFucks() (*Fucks, error) {
 	return &f, nil
 }
 
-func getUpperCaseFucks(uf []string) (*[]string, error) {
+func getUpperCaseFucks(uf []string) ([]string, error) {
 	reg, err := regexp.Compile("[^a-zA-Z]+")
 	if err != nil {
 		return nil, err
@@ -70,18 +70,24 @@ func getUpperCaseFucks(uf []string) (*[]string, error) {
 		processedString := reg.ReplaceAllString(v, "")
 		runes := []rune(processedString)
 		lenR := len(runes)
-		u := 0
 
-		for _, r := range runes {
-			if unicode.IsUpper(r) {
-				u++
-			}
-		}
-
-		if u == lenR {
+		u := numUppercaseRunes(&runes)
+		if *u == lenR {
 			ufc = append(ufc, v)
 		}
 	}
 
-	return &ufc, nil
+	return ufc, nil
+}
+
+func numUppercaseRunes(runes *[]rune) *int {
+	u := 0
+
+	for _, r := range *runes {
+		if unicode.IsUpper(r) {
+			u++
+		}
+	}
+
+	return &u
 }
