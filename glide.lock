@@ -1,0 +1,48 @@
+hash: 60541b1b3da0c14518e601be5335c1b707ec4936fb62e04f56f9d454a1580d55
+updated: 2018-12-20T20:01:36.627560862-08:00
+imports: []
+testImports:
+- name: github.com/franela/goblin
+  version: cd5d08fb4ede9eaac1812fdb513552e7404eae2e
+- name: github.com/onsi/gomega
+  version: 62bff4df71bdbc266561a0caee19f0594b17c240
+  subpackages:
+  - format
+  - internal/assertion
+  - internal/asyncassertion
+  - internal/oraclematcher
+  - internal/testingtsupport
+  - matchers
+  - matchers/support/goraph/bipartitegraph
+  - matchers/support/goraph/edge
+  - matchers/support/goraph/node
+  - matchers/support/goraph/util
+  - types
+- name: golang.org/x/net
+  version: 927f97764cc334a6575f4b7a1584a147864d5723
+  subpackages:
+  - html
+  - html/atom
+  - html/charset
+- name: golang.org/x/text
+  version: 17bcc049122f272a32787ba38073ee47433023e9
+  subpackages:
+  - encoding
+  - encoding/charmap
+  - encoding/htmlindex
+  - encoding/internal
+  - encoding/internal/identifier
+  - encoding/japanese
+  - encoding/korean
+  - encoding/simplifiedchinese
+  - encoding/traditionalchinese
+  - encoding/unicode
+  - internal/language
+  - internal/language/compact
+  - internal/tag
+  - internal/utf8internal
+  - language
+  - runes
+  - transform
+- name: gopkg.in/yaml.v2
+  version: 51d6538a90f86fe93ac480b35f37b2be17fef232
