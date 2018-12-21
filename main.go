@@ -47,11 +47,10 @@ func parseFucks() (*Fucks, error) {
 	}
 
 	bodyBytes, _ := ioutil.ReadAll(resp.Body)
-	bodyString := string(bodyBytes)
 
 	var f Fucks
 
-	err = json.Unmarshal([]byte(bodyString), &f)
+	err = json.Unmarshal(bodyBytes, &f)
 	if err != nil {
 		return nil, fmt.Errorf("failed to put unique fucks in struct: %v", err.Error())
 	}
