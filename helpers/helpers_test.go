@@ -1,4 +1,4 @@
-package main
+package helpers
 
 import (
 	"regexp"
@@ -12,20 +12,10 @@ func TestMain(t *testing.T) {
 	g := Goblin(t)
 	RegisterFailHandler(func(m string, _ ...int) { g.Fail(m) })
 
-	g.Describe("parseFucks", func() {
-		g.It("should parse all the unique fucks into a struct", func() {
-			uf, err := parseFucks()
-
-			Expect(uf).NotTo(BeNil())
-			Expect(len(uf.UniqueFucks)).To(BeNumerically(">=", 277))
-			Expect(err).To(BeNil())
-		})
-	})
-
-	g.Describe("getUpperCaseFucks", func() {
+	g.Describe("GetUpperCaseFucks", func() {
 		g.It("should return a slice of uppercase fucks", func() {
-			uf, _ := parseFucks()
-			ucf, err := getUpperCaseFucks(uf.UniqueFucks)
+			uf, _ := ParseFucks()
+			ucf, err := GetUpperCaseFucks(uf.UniqueFucks)
 			reg, _ := regexp.Compile("[^a-zA-Z]+")
 
 			s0 := reg.ReplaceAllString(ucf[0], "")
@@ -34,8 +24,8 @@ func TestMain(t *testing.T) {
 			runes0 := []rune(s0)
 			runes1 := []rune(s1)
 
-			u0 := numUppercaseRunes(&runes0)
-			u1 := numUppercaseRunes(&runes1)
+			u0 := NumUppercaseRunes(&runes0)
+			u1 := NumUppercaseRunes(&runes1)
 
 			Expect(ucf).NotTo(BeNil())
 			Expect(err).To(BeNil())
@@ -44,7 +34,7 @@ func TestMain(t *testing.T) {
 		})
 	})
 
-	g.Describe("numUppercaseRunes", func() {
+	g.Describe("NumUppercaseRunes", func() {
 		g.It("should accurately count the number of uppercase runes in a word", func() {
 			word1 := "SHAKWAM"
 			word2 := "hellodarknessmyoldfriend"
@@ -52,8 +42,8 @@ func TestMain(t *testing.T) {
 			runeSlice1 := []rune(word1)
 			runeSlice2 := []rune(word2)
 
-			n1 := numUppercaseRunes(&runeSlice1)
-			n2 := numUppercaseRunes(&runeSlice2)
+			n1 := NumUppercaseRunes(&runeSlice1)
+			n2 := NumUppercaseRunes(&runeSlice2)
 
 			Expect(len(word1)).To(Equal(*n1))
 			Expect(len(word2)).NotTo(Equal(*n2))
@@ -61,4 +51,14 @@ func TestMain(t *testing.T) {
 			Expect(*n2).To(BeNumerically("==", 0))
 		})
 	})
+
+  g.Describe("ParseFucks", func() {
+    g.It("should parse all the unique fucks into a struct", func() {
+      uf, err := ParseFucks()
+
+      Expect(uf).NotTo(BeNil())
+      Expect(len(uf.UniqueFucks)).To(BeNumerically(">=", 277))
+      Expect(err).To(BeNil())
+    })
+  })
 }
