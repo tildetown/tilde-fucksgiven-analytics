@@ -5,7 +5,7 @@ go:
   - master
 
 script:
-  - make fmt vet test deploy
+  - make fmt vet test
 
 notifications:
   email: false
