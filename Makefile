@@ -9,9 +9,3 @@ vet:
 
 test:
 	go test -v $(GOLIST)
-
-build:
-	go build
-
-deploy:
-	
