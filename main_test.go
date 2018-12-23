@@ -57,6 +57,8 @@ func TestMain(t *testing.T) {
 
 			Expect(len(word1)).To(Equal(*n1))
 			Expect(len(word2)).NotTo(Equal(*n2))
+			Expect(*n1).To(BeNumerically("==", 7))
+			Expect(*n2).To(BeNumerically("==", 0))
 		})
 	})
 }
