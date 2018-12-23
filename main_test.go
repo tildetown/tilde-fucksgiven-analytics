@@ -1,8 +1,8 @@
 package main
 
 import (
-	"testing"
 	"regexp"
+	"testing"
 
 	. "github.com/franela/goblin"
 	. "github.com/onsi/gomega"

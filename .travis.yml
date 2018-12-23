@@ -1,0 +1,11 @@
+language: go
+
+go:
+  - 1.9
+  - master
+
+script:
+  - make fmt vet test
+
+notifications:
+  email: false
